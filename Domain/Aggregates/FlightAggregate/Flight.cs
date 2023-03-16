@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Domain.Aggregates.AirportAggregate;
 using Domain.Common;
 using Domain.Events;
 using Domain.SeedWork;
@@ -10,8 +11,10 @@ namespace Domain.Aggregates.FlightAggregate
     public class Flight : Entity, IAggregateRoot
     {
         public Guid OriginAirportId { get; private set; }
+        public virtual Airport OriginAirport { get; private set; }
         public Guid DestinationAirportId { get; private set; }
-        
+        public virtual Airport DestinationAirport { get; private set; }
+
         public DateTimeOffset Departure { get; private set; }
         public DateTimeOffset Arrival { get; private set; }
 

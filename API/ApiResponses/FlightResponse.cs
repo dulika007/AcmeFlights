@@ -2,4 +2,11 @@ using System;
 
 namespace API.ApiResponses;
 
-public record FlightResponse(string DepartureAirportCode, string ArrivalAirportCode, DateTimeOffset Departure, DateTimeOffset Arrival, decimal PriceFrom);
+public class FlightResponse
+{
+    public string DepartureAirportCode { get; set; }
+    public string ArrivalAirportCode { get; set; }
+    public DateTimeOffset Departure { get; set; }
+    public decimal PriceFrom { get; set; }
+
+}
