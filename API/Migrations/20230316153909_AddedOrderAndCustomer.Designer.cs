@@ -3,15 +3,17 @@ using System;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace API.Migrations
 {
     [DbContext(typeof(FlightsContext))]
-    partial class FlightsContextModelSnapshot : ModelSnapshot
+    [Migration("20230316153909_AddedOrderAndCustomer")]
+    partial class AddedOrderAndCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,9 +122,6 @@ namespace API.Migrations
                     b.Property<Guid>("FlightId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("FlightRateId")
-                        .HasColumnType("uuid");
-
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
@@ -133,8 +132,6 @@ namespace API.Migrations
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("FlightId");
-
-                    b.HasIndex("FlightRateId");
 
                     b.ToTable("Orders");
                 });
@@ -199,12 +196,6 @@ namespace API.Migrations
                     b.HasOne("Domain.Aggregates.FlightAggregate.Flight", "Flight")
                         .WithMany()
                         .HasForeignKey("FlightId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Aggregates.FlightAggregate.FlightRate", "FlightRate")
-                        .WithMany()
-                        .HasForeignKey("FlightRateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
