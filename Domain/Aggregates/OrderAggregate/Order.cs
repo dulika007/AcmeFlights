@@ -23,6 +23,7 @@ namespace Domain.Aggregates.OrderAggregate
         public Guid AirportId { get; set; }
         public virtual FlightRate FlightRate { get; set; }
         public Guid FlightRateId { get; set; }
+        public int Quantity { get; set; }
         public Status Status { get; set; }
 
         public void ConfirmOrder()

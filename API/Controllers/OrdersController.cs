@@ -2,6 +2,7 @@
 using API.Application.ViewModels;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,14 +28,32 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Create order for book a flight
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns>Returns Status code and orderId</returns>
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderCommand command)
         {
-            var order = await _mediator.Send(command);
+            try
+            {
+                var orderId = await _mediator.Send(command);
 
-            return Ok(order);
+                return StatusCode(StatusCodes.Status201Created, orderId);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }            
         }
 
+        /// <summary>
+        /// Update order of the customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Returns Status</returns>
         [HttpPut("{id:guid}/completed")]
         public async Task<IActionResult> UpdateOrder([FromRoute]Guid id)
         {

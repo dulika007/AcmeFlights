@@ -14,6 +14,12 @@ namespace API.Application.Commands
             _airportRepository = airportRepository;
         }
 
+        /// <summary>
+        /// Create airport handler
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<Airport> Handle(CreateAirportCommand request, CancellationToken cancellationToken)
         {
             var airport = _airportRepository.Add(new Airport(request.Code, request.Name));

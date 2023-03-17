@@ -1,6 +1,4 @@
-﻿using Domain.Aggregates.AirportAggregate;
-using Domain.Aggregates.OrderAggregate;
-using MediatR;
+﻿using MediatR;
 using System;
 
 namespace API.Application.Commands

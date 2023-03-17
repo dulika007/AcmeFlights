@@ -16,6 +16,12 @@ namespace API.Application.Queries
             _flightRepository = flightRepository;
         }
 
+        /// <summary>
+        /// Search flight handler
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Flight>> Handle(SearchFlightQuery request, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(request.Destination))

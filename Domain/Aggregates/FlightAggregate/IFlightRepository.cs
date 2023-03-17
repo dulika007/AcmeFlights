@@ -13,9 +13,10 @@ namespace Domain.Aggregates.FlightAggregate
 
         void Update(Flight flight);
 
-        Task<Flight> GetAsync(Guid flightId);
+        Task<Flight> GetByIdAsync(Guid flightId);
 
         Task<IEnumerable<Flight>> GetAllAsync();
+
         Task<IEnumerable<Flight>> GetAllByDestinationAsync(string destination);
     }
 }

@@ -29,6 +29,11 @@ public class FlightsController : ControllerBase
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// Retrieve available flights
+    /// </summary>
+    /// <param name="command"></param>
+    /// <returns>Returns Status code and Flight object</returns>
     [HttpGet]
     [Route("Search")]
     public async Task<IActionResult> GetAvailableFlights([FromQuery] SearchFlightQuery command)

@@ -10,6 +10,6 @@ namespace Domain.Aggregates.AirportAggregate
 
         void Update(Airport airport);
 
-        Task<Airport> GetAsync(Guid airportId);
+        Task<Airport> GetByIdAsync(Guid airportId);
     }
 }
