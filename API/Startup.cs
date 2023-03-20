@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using MediatR;
 using Domain.Aggregates.FlightAggregate;
 using Domain.Aggregates.OrderAggregate;
+using Domain.Aggregates.CustomerAggregate;
 
 namespace API
 {
@@ -44,6 +45,7 @@ namespace API
             services.AddScoped<IAirportRepository, AirportRepository>();
             services.AddScoped<IFlightRepository, FlightRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
