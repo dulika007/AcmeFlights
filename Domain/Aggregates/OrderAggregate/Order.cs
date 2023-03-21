@@ -19,11 +19,10 @@ namespace Domain.Aggregates.OrderAggregate
         public Guid CustomerId { get; set; }
         public virtual Flight Flight { get; set; }
         public Guid FlightId { get; set; }
-        public virtual Airport Airport { get; set; }
-        public Guid AirportId { get; set; }
         public virtual FlightRate FlightRate { get; set; }
         public Guid FlightRateId { get; set; }
         public int Quantity { get; set; }
+        public decimal Price { get; set; }
         public Status Status { get; set; }
 
         public void ConfirmOrder()

@@ -32,15 +32,15 @@ namespace API.Controllers
         /// Create order for book a flight
         /// </summary>
         /// <param name="command"></param>
-        /// <returns>Returns Status code and orderId</returns>
+        /// <returns>Returns Status code and OrderViewModel</returns>
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderCommand command)
         {
             try
             {
-                var orderId = await _mediator.Send(command);
+                var order = await _mediator.Send(command);
 
-                return StatusCode(StatusCodes.Status201Created, orderId);
+                return StatusCode(StatusCodes.Status201Created, order);
             }
             catch (Exception ex)
             {

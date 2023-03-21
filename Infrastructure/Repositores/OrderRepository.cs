@@ -1,11 +1,7 @@
-﻿using Domain.Aggregates.FlightAggregate;
-using Domain.Aggregates.OrderAggregate;
+﻿using Domain.Aggregates.OrderAggregate;
 using Domain.SeedWork;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repositores
@@ -50,7 +46,7 @@ namespace Infrastructure.Repositores
         /// <returns></returns>
         public async Task<Order> GetByIdAsync(Guid orderId)
         {
-            return await _context.Orders.Include(i => i.Airport).Include(i => i.Flight).Include(i => i.Customer).Include(i => i.FlightRate).FirstOrDefaultAsync(o => o.Id == orderId);
+            return await _context.Orders.Include(i => i.Flight).Include(i => i.Customer).Include(i => i.FlightRate).FirstOrDefaultAsync(o => o.Id == orderId);
         }
     }
 }

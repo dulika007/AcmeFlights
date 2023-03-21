@@ -23,7 +23,6 @@ namespace Infrastructure.EntityConfigurations
             builder.Property<Guid>("AirportId").IsRequired();
 
             builder.HasOne<Customer>(i => i.Customer).WithMany().HasForeignKey(i => i.CustomerId);
-            builder.HasOne<Airport>(i => i.Airport).WithMany().HasForeignKey(i => i.AirportId);
             builder.HasOne<Flight>(i => i.Flight).WithMany().HasForeignKey(i => i.FlightId);
         }
     }
